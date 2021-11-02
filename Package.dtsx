@@ -1,0 +1,2660 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/18/2021 6:45:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PEDROSGAMINGRIG"
+  DTS:CreatorName="PEDROSGAMINGRIG\pena3"
+  DTS:DTSID="{27788718-6270-484C-BEE6-559ECB522163}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{4E6D761D-A577-488C-AC57-335A02C96730}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D00297A6-42B2-4D45-8562-5A8BF0D4533F}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\pena3\Documents\ISM 4402 Business Intelligence\WHR_Data.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9420E35D-3544-4FBD-9149-BD84A18BF243}"
+      DTS:ObjectName="PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=PEDROSGAMINGRIG\SQLEXPRESS;Initial Catalog=WHR_G7;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{475655F5-8038-4D2C-89E6-464E38801680}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract, Transform and Load Data from Excel File to SQL Server Staging Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Extract Data from WHR Excel File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Country]"
+                      length="255"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Regional_Indicator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Regional_Indicator]"
+                      length="255"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Regional_Indicator]"
+                      name="Regional_Indicator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Happiness_Score]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Happiness_Score]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Happiness_Score]"
+                      name="Happiness_Score"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[GDP_Per_Capita]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[GDP_Per_Capita]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[GDP_Per_Capita]"
+                      name="GDP_Per_Capita"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Social_Support]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Social_Support]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Social_Support]"
+                      name="Social_Support"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      name="Healthy_Life_Expectancy_At_Birth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Freedom_To_Make_Life_Choices]"
+                      name="Freedom_To_Make_Life_Choices"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Generosity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Generosity]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Generosity]"
+                      name="Generosity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Perceptions_Of_Corruption]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Perceptions_Of_Corruption]"
+                      name="Perceptions_Of_Corruption"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Positive_Affect]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Positive_Affect]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Positive_Affect]"
+                      name="Positive_Affect"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Negative_Affect]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Negative_Affect]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Negative_Affect]"
+                      name="Negative_Affect"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="255"
+                      name="Regional_Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Happiness_Score]"
+                      dataType="r8"
+                      name="Happiness_Score" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[GDP_Per_Capita]"
+                      dataType="r8"
+                      name="GDP_Per_Capita" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Social_Support]"
+                      dataType="r8"
+                      name="Social_Support" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      name="Healthy_Life_Expectancy_At_Birth" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      name="Freedom_To_Make_Life_Choices" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Generosity]"
+                      dataType="r8"
+                      name="Generosity" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      name="Perceptions_Of_Corruption" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Positive_Affect]"
+                      dataType="r8"
+                      name="Positive_Affect" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].ExternalColumns[Negative_Affect]"
+                      dataType="r8"
+                      name="Negative_Affect" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Regional_Indicator]"
+                      name="Regional_Indicator" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Happiness_Score]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Happiness_Score]"
+                      name="Happiness_Score" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[GDP_Per_Capita]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[GDP_Per_Capita]"
+                      name="GDP_Per_Capita" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Social_Support]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Social_Support]"
+                      name="Social_Support" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      name="Healthy_Life_Expectancy_At_Birth" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Freedom_To_Make_Life_Choices]"
+                      name="Freedom_To_Make_Life_Choices" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Generosity]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Generosity]"
+                      name="Generosity" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Perceptions_Of_Corruption]"
+                      name="Perceptions_Of_Corruption" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Positive_Affect]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Positive_Affect]"
+                      name="Positive_Affect" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Negative_Affect]"
+                      dataType="r8"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[Negative_Affect]"
+                      name="Negative_Affect" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Transformed Data"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[WHR_G7].[Staging_Table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Country]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Transformed Country"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Country]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Regional_Indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="Transformed Regional_Indicator"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Regional_Indicator]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Regional_Indicator]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Year]"
+                      cachedDataType="ui4"
+                      cachedName="Transformed Year"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Year]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Happiness_Score]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Happiness_Score"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Happiness_Score]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Happiness_Score]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed GDP_Per_Capita]"
+                      cachedDataType="r8"
+                      cachedName="Transformed GDP_Per_Capita"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[GDP_Per_Capita]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed GDP_Per_Capita]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Social_Support]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Social_Support"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Social_Support]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Social_Support]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Freedom_To_Make_Life_Choices]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Freedom_To_Make_Life_Choices"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Freedom_To_Make_Life_Choices]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Generosity]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Generosity"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Generosity]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Generosity]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Perceptions_Of_Corruption]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Perceptions_Of_Corruption"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Perceptions_Of_Corruption]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Perceptions_Of_Corruption]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Positive_Affect]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Positive_Affect"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Positive_Affect]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Positive_Affect]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Negative_Affect]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Negative_Affect"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Negative_Affect]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Negative_Affect]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].Columns[Transformed Healthy_Life_Expectancy_At_Birth]"
+                      cachedDataType="r8"
+                      cachedName="Transformed Healthy_Life_Expectancy_At_Birth"
+                      externalMetadataColumnId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Healthy_Life_Expectancy_At_Birth]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="500"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Country_ID]"
+                      dataType="i4"
+                      name="Country_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="1000"
+                      name="Regional_Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Regional_ID]"
+                      dataType="i4"
+                      name="Regional_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Happiness_Score]"
+                      dataType="r8"
+                      name="Happiness_Score" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[GDP_Per_Capita]"
+                      dataType="r8"
+                      name="GDP_Per_Capita" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Social_Support]"
+                      dataType="r8"
+                      name="Social_Support" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      name="Healthy_Life_Expectancy_At_Birth" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      name="Freedom_To_Make_Life_Choices" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Generosity]"
+                      dataType="r8"
+                      name="Generosity" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      name="Perceptions_Of_Corruption" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Positive_Affect]"
+                      dataType="r8"
+                      name="Positive_Affect" />
+                    <externalMetadataColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input].ExternalColumns[Negative_Affect]"
+                      dataType="r8"
+                      name="Negative_Affect" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Transform Data from Excel File"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Regional_Indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Regional_Indicator"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Regional_Indicator]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Happiness_Score]"
+                      cachedDataType="r8"
+                      cachedName="Happiness_Score"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Happiness_Score]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[GDP_Per_Capita]"
+                      cachedDataType="r8"
+                      cachedName="GDP_Per_Capita"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[GDP_Per_Capita]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Social_Support]"
+                      cachedDataType="r8"
+                      cachedName="Social_Support"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Social_Support]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      cachedDataType="r8"
+                      cachedName="Healthy_Life_Expectancy_At_Birth"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Healthy_Life_Expectancy_At_Birth]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Freedom_To_Make_Life_Choices]"
+                      cachedDataType="r8"
+                      cachedName="Freedom_To_Make_Life_Choices"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Freedom_To_Make_Life_Choices]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Generosity]"
+                      cachedDataType="r8"
+                      cachedName="Generosity"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Generosity]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Perceptions_Of_Corruption]"
+                      cachedDataType="r8"
+                      cachedName="Perceptions_Of_Corruption"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Perceptions_Of_Corruption]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Positive_Affect]"
+                      cachedDataType="r8"
+                      cachedName="Positive_Affect"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Positive_Affect]" />
+                    <inputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input].Columns[Negative_Affect]"
+                      cachedDataType="r8"
+                      cachedName="Negative_Affect"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Negative_Affect]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="500"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Country]"
+                      name="Transformed Country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Country]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Regional_Indicator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="1000"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Regional_Indicator]"
+                      name="Transformed Regional_Indicator"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Regional_Indicator]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Year]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Year]"
+                      name="Transformed Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Year]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Happiness_Score]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Happiness_Score]"
+                      name="Transformed Happiness_Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Happiness_Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed GDP_Per_Capita]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed GDP_Per_Capita]"
+                      name="Transformed GDP_Per_Capita"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[GDP_Per_Capita]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Social_Support]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Social_Support]"
+                      name="Transformed Social_Support"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Social_Support]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Healthy_Life_Expectancy_At_Birth]"
+                      name="Transformed Healthy_Life_Expectancy_At_Birth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Healthy_Life_Expectancy_At_Birth]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Freedom_To_Make_Life_Choices]"
+                      name="Transformed Freedom_To_Make_Life_Choices"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Freedom_To_Make_Life_Choices]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Generosity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Generosity]"
+                      name="Transformed Generosity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Generosity]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Perceptions_Of_Corruption]"
+                      name="Transformed Perceptions_Of_Corruption"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Perceptions_Of_Corruption]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Positive_Affect]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Positive_Affect]"
+                      name="Transformed Positive_Affect"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Positive_Affect]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Negative_Affect]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output].Columns[Transformed Negative_Affect]"
+                      name="Transformed Negative_Affect"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output].Columns[Negative_Affect]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table.Paths[Data Conversion Output]"
+              endId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table.Paths[Excel Source Output]"
+              endId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Data From Staging Table To Country Dimension Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{79902717-21F1-4B37-83D7-800DDF0B9340}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data From Staging Table To Country Dimension Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Data From Staging Table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct Country 
+from WHR_G7.Staging_Table
+order by Country asc</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="500"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="500"
+                      name="Country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Data into Country Dimension Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[WHR_G7].[Country_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Country]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input].ExternalColumns[Country_ID]"
+                      dataType="i4"
+                      name="Country_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="500"
+                      name="Country" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data From Staging Table To Country Dimension Table.Paths[OLE DB Source Output]"
+              endId="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Data From Staging Table to Fact Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E53DEDFB-1069-461D-BE34-D20ECC4596ED}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data From Staging Table to Fact Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Data From Staging Table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[WHR_G7].[Staging_Table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Country_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Country_ID]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Country_ID]"
+                      name="Country_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Regional_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Regional_ID]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Regional_ID]"
+                      name="Regional_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Happiness_Score]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Happiness_Score]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Happiness_Score]"
+                      name="Happiness_Score"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[GDP_Per_Capita]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[GDP_Per_Capita]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[GDP_Per_Capita]"
+                      name="GDP_Per_Capita"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Social_Support]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Social_Support]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Social_Support]"
+                      name="Social_Support"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      name="Healthy_Life_Expectancy_At_Birth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Freedom_To_Make_Life_Choices]"
+                      name="Freedom_To_Make_Life_Choices"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Generosity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Generosity]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Generosity]"
+                      name="Generosity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Perceptions_Of_Corruption]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Perceptions_Of_Corruption]"
+                      name="Perceptions_Of_Corruption"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Positive_Affect]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Positive_Affect]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Positive_Affect]"
+                      name="Positive_Affect"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Negative_Affect]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Negative_Affect]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Negative_Affect]"
+                      name="Negative_Affect"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="500"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Country_ID]"
+                      dataType="i4"
+                      name="Country_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="1000"
+                      name="Regional_Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Regional_ID]"
+                      dataType="i4"
+                      name="Regional_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Happiness_Score]"
+                      dataType="r8"
+                      name="Happiness_Score" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[GDP_Per_Capita]"
+                      dataType="r8"
+                      name="GDP_Per_Capita" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Social_Support]"
+                      dataType="r8"
+                      name="Social_Support" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      name="Healthy_Life_Expectancy_At_Birth" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      name="Freedom_To_Make_Life_Choices" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Generosity]"
+                      dataType="r8"
+                      name="Generosity" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      name="Perceptions_Of_Corruption" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Positive_Affect]"
+                      dataType="r8"
+                      name="Positive_Affect" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].ExternalColumns[Negative_Affect]"
+                      dataType="r8"
+                      name="Negative_Affect" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Country_ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Country_ID]"
+                      name="Country_ID" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Regional_ID]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Regional_ID]"
+                      name="Regional_ID" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Happiness_Score]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Happiness_Score]"
+                      name="Happiness_Score" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[GDP_Per_Capita]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[GDP_Per_Capita]"
+                      name="GDP_Per_Capita" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Social_Support]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Social_Support]"
+                      name="Social_Support" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      name="Healthy_Life_Expectancy_At_Birth" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Freedom_To_Make_Life_Choices]"
+                      name="Freedom_To_Make_Life_Choices" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Generosity]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Generosity]"
+                      name="Generosity" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Perceptions_Of_Corruption]"
+                      name="Perceptions_Of_Corruption" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Positive_Affect]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Positive_Affect]"
+                      name="Positive_Affect" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Negative_Affect]"
+                      dataType="r8"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[Negative_Affect]"
+                      name="Negative_Affect" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Data  to Fact Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[WHR_G7].[Fact_Table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Country_ID]"
+                      cachedDataType="i4"
+                      cachedName="Country_ID"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Country_ID]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Country_ID]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Regional_ID]"
+                      cachedDataType="i4"
+                      cachedName="Regional_ID"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Regional_ID]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Regional_ID]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Happiness_Score]"
+                      cachedDataType="r8"
+                      cachedName="Happiness_Score"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Happiness_Score]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Happiness_Score]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Social_Support]"
+                      cachedDataType="r8"
+                      cachedName="Social_Support"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Social_Support]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Social_Support]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Healthy_Life_Expectancy_At_Birth]"
+                      cachedDataType="r8"
+                      cachedName="Healthy_Life_Expectancy_At_Birth"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Healthy_Life_Expectancy_At_Birth]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Freedom_To_Make_Life_Choices]"
+                      cachedDataType="r8"
+                      cachedName="Freedom_To_Make_Life_Choices"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Freedom_To_Make_Life_Choices]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Generosity]"
+                      cachedDataType="r8"
+                      cachedName="Generosity"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Generosity]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Generosity]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Perceptions_Of_Corruption]"
+                      cachedDataType="r8"
+                      cachedName="Perceptions_Of_Corruption"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Perceptions_Of_Corruption]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Perceptions_Of_Corruption]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Positive_Affect]"
+                      cachedDataType="r8"
+                      cachedName="Positive_Affect"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Positive_Affect]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Positive_Affect]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[Negative_Affect]"
+                      cachedDataType="r8"
+                      cachedName="Negative_Affect"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Negative_Affect]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[Negative_Affect]" />
+                    <inputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].Columns[GDP_Per_Capita]"
+                      cachedDataType="r8"
+                      cachedName="GDP_Per_Capita"
+                      externalMetadataColumnId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[GPD_Per_Capita]"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output].Columns[GDP_Per_Capita]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Record_ID]"
+                      dataType="i4"
+                      name="Record_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Country_ID]"
+                      dataType="i4"
+                      name="Country_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Regional_ID]"
+                      dataType="i4"
+                      name="Regional_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Happiness_Score]"
+                      dataType="r8"
+                      name="Happiness_Score" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[GPD_Per_Capita]"
+                      dataType="r8"
+                      name="GPD_Per_Capita" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Social_Support]"
+                      dataType="r8"
+                      name="Social_Support" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Healthy_Life_Expectancy_At_Birth]"
+                      dataType="r8"
+                      name="Healthy_Life_Expectancy_At_Birth" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Freedom_To_Make_Life_Choices]"
+                      dataType="r8"
+                      name="Freedom_To_Make_Life_Choices" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Generosity]"
+                      dataType="r8"
+                      name="Generosity" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Perceptions_Of_Corruption]"
+                      dataType="r8"
+                      name="Perceptions_Of_Corruption" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Positive_Affect]"
+                      dataType="r8"
+                      name="Positive_Affect" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input].ExternalColumns[Negative_Affect]"
+                      dataType="r8"
+                      name="Negative_Affect" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data From Staging Table to Fact Table.Paths[OLE DB Source Output]"
+              endId="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Data from Staging Table to Regional Dimension Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{92ABB329-AA0E-4750-A09A-A979C72A4228}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data from Staging Table to Regional Dimension Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Distinct Regions"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT Regional_Indicator FROM WHR_G7.Staging_Table ORDER BY Regional_Indicator ASC</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output].Columns[Regional_Indicator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output].ExternalColumns[Regional_Indicator]"
+                      length="1000"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output].Columns[Regional_Indicator]"
+                      name="Regional_Indicator"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output].ExternalColumns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="1000"
+                      name="Regional_Indicator" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output].Columns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="1000"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output].Columns[Regional_Indicator]"
+                      name="Regional_Indicator" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[WHR_G7].[Regional_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  connectionManagerRefId="Package.ConnectionManagers[PEDROSGAMINGRIG\SQLEXPRESS.WHR_G7]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Regional_Indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="Regional_Indicator"
+                      externalMetadataColumnId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional_Indicator]"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output].Columns[Regional_Indicator]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional_ID]"
+                      dataType="i4"
+                      name="Regional_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional_Indicator]"
+                      dataType="wstr"
+                      length="1000"
+                      name="Regional_Indicator" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data from Staging Table to Regional Dimension Table.Paths[OLE DB Source Output]"
+              endId="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Staging Table With CountryID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{655E3834-F6B8-401E-8D25-74A09D04E03A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Staging Table With CountryID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9420E35D-3544-4FBD-9149-BD84A18BF243}"
+          SQLTask:SqlStatementSource="update WHR_G7.Staging_Table&#xA;set Country_ID = WHR_G7.Country_Dim.Country_ID&#xA;from WHR_G7.Staging_Table&#xA;inner join WHR_G7.Country_Dim on WHR_G7.Staging_Table.Country = WHR_G7.Country_Dim.Country" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Staging Table With RegionalID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{43E0A55D-3D4E-4345-B312-C67E1CA6CEEF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Staging Table With RegionalID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9420E35D-3544-4FBD-9149-BD84A18BF243}"
+          SQLTask:SqlStatementSource="UPDATE WHR_G7.Staging_Table&#xA;SET WHR_G7.Staging_Table.Regional_ID = WHR_G7.Regional_Dim.Regional_ID&#xA;FROM WHR_G7.Staging_Table&#xA;INNER JOIN WHR_G7.Regional_Dim ON WHR_G7.Staging_Table.Regional_Indicator = WHR_G7.Regional_Dim.Regional_Indicator " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0753BAAD-2949-445B-8D3A-F3D3EE331B39}"
+      DTS:From="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Data From Staging Table To Country Dimension Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{242D08E2-6D36-45A9-9E9C-E9E206DD4924}"
+      DTS:From="Package\Load Data From Staging Table To Country Dimension Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update Staging Table With CountryID" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{650EC375-598F-4BE5-8176-292115DABC94}"
+      DTS:From="Package\Update Staging Table With CountryID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load Data from Staging Table to Regional Dimension Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{4DE1A8BF-2395-4C5F-90D6-305A4BB1F388}"
+      DTS:From="Package\Load Data from Staging Table to Regional Dimension Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update Staging Table With RegionalID" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{70A6D505-073B-4771-9CBF-7622EC1086AD}"
+      DTS:From="Package\Update Staging Table With RegionalID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Load Data From Staging Table to Fact Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="463,42"
+          Id="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table"
+          TopLeft="50,18" />
+        <NodeLayout
+          Size="372,42"
+          Id="Package\Load Data From Staging Table To Country Dimension Table"
+          TopLeft="213,94" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="281.5,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.5,34"
+              Start="0,0"
+              End="117.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="113.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.5,17"
+                    Point2="117.5,17"
+                    Point3="117.5,21" />
+                  <mssgle:LineSegment
+                    End="117.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="263,42"
+          Id="Package\Update Staging Table With CountryID"
+          TopLeft="439,161" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="399,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.5,25"
+              Start="0,0"
+              End="171.5,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.5"
+                    Point2="0,12.5"
+                    Point3="4,12.5" />
+                  <mssgle:LineSegment
+                    End="167.5,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="167.5,12.5"
+                    Point2="171.5,12.5"
+                    Point3="171.5,16.5" />
+                  <mssgle:LineSegment
+                    End="171.5,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="369,42"
+          Id="Package\Load Data from Staging Table to Regional Dimension Table"
+          TopLeft="23,240" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="570.5,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-363,37"
+              Start="0,0"
+              End="-363,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="-4,18.5" />
+                  <mssgle:LineSegment
+                    End="-359,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-359,18.5"
+                    Point2="-363,18.5"
+                    Point3="-363,22.5" />
+                  <mssgle:LineSegment
+                    End="-363,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="268,42"
+          Id="Package\Update Staging Table With RegionalID"
+          TopLeft="122,308" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="207.5,282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.5,26"
+              Start="0,0"
+              End="48.5,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="4,13" />
+                  <mssgle:LineSegment
+                    End="44.5,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.5,13"
+                    Point2="48.5,13"
+                    Point3="48.5,17" />
+                  <mssgle:LineSegment
+                    End="48.5,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="296,42"
+          Id="Package\Load Data From Staging Table to Fact Table"
+          TopLeft="346,388" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="256,350">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="238,38"
+              Start="0,0"
+              End="238,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="234,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="234,19"
+                    Point2="238,19"
+                    Point3="238,23" />
+                  <mssgle:LineSegment
+                    End="238,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Transform Data from Excel File"
+          TopLeft="556.5,204.5" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data"
+          TopLeft="776.5,313.5" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File"
+          TopLeft="399,108" />
+        <EdgeLayout
+          Id="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table.Paths[Excel Source Output]"
+          TopLeft="521,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="151,54.5"
+              Start="0,0"
+              End="151,47">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.25"
+                    Point2="0,27.25"
+                    Point3="4,27.25" />
+                  <mssgle:LineSegment
+                    End="147,27.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="147,27.25"
+                    Point2="151,27.25"
+                    Point3="151,31.25" />
+                  <mssgle:LineSegment
+                    End="151,47" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table.Paths[Data Conversion Output]"
+          TopLeft="672,246.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="202,67"
+              Start="0,0"
+              End="202,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="4,33.5" />
+                  <mssgle:LineSegment
+                    End="198,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="198,33.5"
+                    Point2="202,33.5"
+                    Point3="202,37.5" />
+                  <mssgle:LineSegment
+                    End="202,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Load Transformed Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract, Transform and Load Data from Excel File to SQL Server Staging Table\Extract Data from WHR Excel File">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Data From Staging Table To Country Dimension Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table"
+          TopLeft="238,95" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table"
+          TopLeft="495,224" />
+        <EdgeLayout
+          Id="Package\Load Data From Staging Table To Country Dimension Table.Paths[OLE DB Source Output]"
+          TopLeft="349,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="284.5,87"
+              Start="0,0"
+              End="284.5,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5"
+                    Point2="0,43.5"
+                    Point3="4,43.5" />
+                  <mssgle:LineSegment
+                    End="280.5,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="280.5,43.5"
+                    Point2="284.5,43.5"
+                    Point3="284.5,47.5" />
+                  <mssgle:LineSegment
+                    End="284.5,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data From Staging Table To Country Dimension Table\Get Data From Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data From Staging Table To Country Dimension Table\Load Data into Country Dimension Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Data from Staging Table to Regional Dimension Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions"
+          TopLeft="281,80" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination"
+          TopLeft="419,219" />
+        <EdgeLayout
+          Id="Package\Load Data from Staging Table to Regional Dimension Table.Paths[OLE DB Source Output]"
+          TopLeft="370.5,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137,97"
+              Start="0,0"
+              End="137,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.5"
+                    Point2="0,48.5"
+                    Point3="4,48.5" />
+                  <mssgle:LineSegment
+                    End="133,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133,48.5"
+                    Point2="137,48.5"
+                    Point3="137,52.5" />
+                  <mssgle:LineSegment
+                    End="137,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data from Staging Table to Regional Dimension Table\Get Distinct Regions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data from Staging Table to Regional Dimension Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Data From Staging Table to Fact Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table"
+          TopLeft="65,44" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table"
+          TopLeft="209,147" />
+        <EdgeLayout
+          Id="Package\Load Data From Staging Table to Fact Table.Paths[OLE DB Source Output]"
+          TopLeft="176,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.5,61"
+              Start="0,0"
+              End="132.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="128.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="128.5,30.5"
+                    Point2="132.5,30.5"
+                    Point3="132.5,34.5" />
+                  <mssgle:LineSegment
+                    End="132.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data From Staging Table to Fact Table\Get Data From Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data From Staging Table to Fact Table\Load Data  to Fact Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
